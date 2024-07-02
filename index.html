@@ -13,25 +13,25 @@
             <button><img src="images/search.png" alt="img3" ></button>
         </div>
         <div class="weather">
-            <img src="images/rain.png" alt="img2" class="weather-icon">
+            <img src="images\clouds.png" alt="img2" class="weather-icon">
             <h1 class="temp">22°c</h1>
-            <h2 class="city" New York></h2>
+            <h2 class="city" >New York</h2>
             <div class="details">
                 <div class="col">
-                    <img src="images/humidity.png" alt="img">
+                    <img src="images\humidity.png" alt="img">
                     <div>
                         <P class="humidity">50%</P>
                         <P>humidity</P>
                     </div>
                 </div>
             
-            <div class="col">
-                <img src="images/wind.png" alt="img4">
-                <div>
-                    <P class="wind">15km/h</P>
-                    <P>wind speed</P>
+                <div class="col">
+                    <img src="images\wind.png" alt="img4">
+                    <div>
+                        <P class="wind">15km/h</P>
+                        <P>wind speed</P>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
         const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
         const searchBox = document.querySelector(".search input");
-        const searchBtn = document.querySelector(".search Button");
+        const searchBtn = document.querySelector(".search button");
         const weatherIcon = document.querySelector(".weather-icon");
 
 
@@ -50,25 +50,29 @@
              var data = await response.json();
 
              console.log(data);
+             console.log(data?.weather[0]?.main );
  
-             document.querySelector(".city").innerHTML =data.name;
-             document.querySelector(".temp").innerHTML =Math.round(data.main.temp) +"°c";
-             document.querySelector(".humidity").innerHTML =data.main.humidity +"%";
-             document.querySelector(".wind").innerHTML =data.wind.speed +" km/h ";   
+             document.querySelector(".city").innerHTML =data?.name;
+             document.querySelector(".temp").innerHTML =Math.round(data?.main?.temp) +"°c";
+             document.querySelector(".humidity").innerHTML =data?.main?.humidity +"%";
+             document.querySelector(".wind").innerHTML =data?.wind?.speed +" km/h ";   
              
-             if(data.weather[0].main  == "clouds"){
+             if(data?.weather[0]?.main  == "Clouds"){
                 weatherIcon.src ="images/clouds.png";
              }
-             else if(data.weather[0].main  == "clear"){
+             else if(data?.weather[0]?.main  == "Haze"){
                 weatherIcon.src ="images/clear.png";
              }
-             else if(data.weather[0].main  == "rain"){
+             else if(data?.weather[0]?.main  == "Clear"){
+                weatherIcon.src ="images/clear.png ";
+             }
+             else if(data?.weather[0]?.main  == "Rain"){
                 weatherIcon.src ="images/rain.png";
              }
-             else if(data.weather[0].main  == "Drizzle"){
+             else if(data?.weather[0]?.main  == "Drizzle"){
                 weatherIcon.src ="images/drizzle.png";
              }
-             else if(data.weather[0].main  == "mist"){
+             else if(data?.weather[0]?.main  == "Mist"){
                 weatherIcon.src ="images/mist.png";
              }
 
