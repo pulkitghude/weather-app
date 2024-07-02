@@ -57,17 +57,9 @@
              if(data.weather[0].main == "clouds"){
               WeatherIcon.src="images/clouds.png";
              }
-             else if(data.weather[0].main == "clear"){
-              WeatherIcon.src = "images/clear.png";
-             }
-             else if(data.weather[0].main == "Rain"){
-              WeatherIcon.src = "images/rain.png";
-             }
-             else if(data.weather[0].main == "Drizzle"){
-              WeatherIcon.src = "images/drizzle.png";
-             }
-             else if(data.weather[0].main == "mist"){
-              WeatherIcon.src = "images/mist.png";
+            
+             else if (data.weather[0].main == "clear"){
+              weatherIcon.img.src="images/clear.png";
              }
              
         } 
